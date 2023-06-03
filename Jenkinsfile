@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
         stage('Build Application') {
             steps {
                 def modifiedFiles = sh(returnStdout: true, script: 'git diff --name-only origin/master..HEAD')
@@ -21,7 +26,7 @@ pipeline {
               //   timeout(time: 3, unit: 'MINUTES') {
                //     retry(5) {
 
-                 sh "scp -o StrictHostKeyChecking=no target/java-tomcat-maven-example.war ubuntu@52.3.183.31:/opt/apache-tomcat-8.5.89/webapps"
+                 sh "scp -o StrictHostKeyChecking=no target/java-tomcat-maven-example.war ubuntu@3.95.184.198:/opt/apache-tomcat-8.5.89/webapps"
                   }
             }
 
