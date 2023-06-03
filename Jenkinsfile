@@ -7,11 +7,11 @@ pipeline {
       }
     }
         stage('Build Application') {
+            when {
+        changeset "**/src/main/webapp/index.jsp" // Modify the path as needed
+             }
             steps {
-            //    def modifiedFiles = sh(returnStdout: true, script: 'git diff --name-only origin/master..HEAD')
-         // if (modifiedFiles.contains('src/main/webapp/index.jsp') || modifiedFiles.contains('src/main/webapp/WEB-INF')) {
-                sh 'mvn -f pom.xml clean package'
-        //  }
+              sh 'mvn -f pom.xml clean package'
             }
             post {
                 success {
