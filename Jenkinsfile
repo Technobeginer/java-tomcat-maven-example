@@ -8,10 +8,10 @@ pipeline {
     }
         stage('Build Application') {
             steps {
-                def modifiedFiles = sh(returnStdout: true, script: 'git diff --name-only origin/master..HEAD')
-          if (modifiedFiles.contains('src/main/webapp/index.jsp') || modifiedFiles.contains('src/main/webapp/WEB-INF')) {
+            //    def modifiedFiles = sh(returnStdout: true, script: 'git diff --name-only origin/master..HEAD')
+         // if (modifiedFiles.contains('src/main/webapp/index.jsp') || modifiedFiles.contains('src/main/webapp/WEB-INF')) {
                 sh 'mvn -f pom.xml clean package'
-          }
+        //  }
             }
             post {
                 success {
