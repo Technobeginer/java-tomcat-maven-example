@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Building Docker image for Tomcat8 application'){
              steps{
-                 sh 'docker build -t pipeline:${env.BUILD_NUMBER} .'
+                 sh 'docker build -t pipeline:${env.BUILD_ID} .'
              }
         }
             
@@ -49,8 +49,8 @@ pipeline {
             
         stage('Pushing Image to Docker public hub'){
              steps{
-                 sh 'docker tag pipeline:${env.BUILD_NUMBER} shyamkrishna143/pipeline:${env.BUILD_NUMBER}'
-                 sh 'docker push shyamkrishna143/pipeline:${env.BUILD_NUMBER}'
+                 sh 'docker tag pipeline:${env.BUILD_ID} shyamkrishna143/pipeline:${env.BUILD_ID}'
+                 sh 'docker push shyamkrishna143/pipeline:${env.BUILD_ID}'
              }
         }
     } 
