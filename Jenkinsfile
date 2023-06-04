@@ -49,7 +49,7 @@ pipeline {
             
         stage('Pushing Image to Docker public hub'){
              steps{
-                 sh 'docker image push pipeline:1.0'
+                 sh 'docker push shyamakrishna143/pipeline:1.0'
              }
         }
     } 
