@@ -49,8 +49,8 @@ pipeline {
             
         stage('Pushing Image to Docker public hub'){
              steps{
-                 sh 'docker tag pipeline:1.0 shyamakrishna143/pipeline:1.0'
-                 sh 'docker push shyamakrishna143/pipeline:1.0'
+                 sh 'docker tag pipeline:1.0 shyamkrishna143/pipeline:1.0'
+                 sh 'docker push shyamkrishna143/pipeline:1.0'
              }
         }
     } 
