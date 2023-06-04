@@ -26,7 +26,7 @@ pipeline {
               //   timeout(time: 3, unit: 'MINUTES') {
                //     retry(5) {
 
-                 sh "scp -o StrictHostKeyChecking=no target/java-tomcat-maven-example.war ubuntu@3.86.35.155:/opt/apache-tomcat-8.5.89/webapps"
+                 sh "scp -o StrictHostKeyChecking=no target/java-tomcat-maven-example.war ubuntu@174.129.92.53:/opt/apache-tomcat-8.5.89/webapps"
                   }
             }
 
