@@ -45,6 +45,7 @@ pipeline {
       sh "docker login -u shyamkrishna143 -p ${dockerpwd}"
             }
         }
+         }
             
         stage('Pushing Image to Docker public hub'){
              steps{
