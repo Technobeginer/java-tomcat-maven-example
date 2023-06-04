@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Building Docker image for Tomcat8 application'){
              steps{
-                 sh 'docker build -t pipeline:$BUILD_NUMBER'
+                 sh 'docker build -t pipeline:$BUILD_NUMBER .'
              }
         }
             
