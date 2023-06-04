@@ -7,9 +7,9 @@ pipeline {
       }
     }
         stage('Build Application') {
-            when {
-        changeset "**/src/main/webapp/index.jsp" // Modify the path as needed
-             }
+      //      when {
+     //   changeset "**/src/main/webapp/index.jsp" // Modify the path as needed
+      //       }
             steps {
               sh 'mvn -f pom.xml clean package'
             }
@@ -20,6 +20,13 @@ pipeline {
                 }
             }
         }
+        stage('Building Docker image for Tomcat8 application'){
+             steps{
+                 sh 'docker build -t pipeline:1.0 .'
+             }
+        }
+            
+       /*     
         stage('Deploy in Staging Environment'){
             steps{
                sshagent(['deploy_user']) {
@@ -30,9 +37,21 @@ pipeline {
                   }
             }
 
+        } */
+         
+        stage("Docker login"){
+      steps{
+      withCredentials([string(credentialsId: 'DockerHubPwd', variable: 'dockerpwd')]) {
+      sh "docker login -u shyamkrishna143 -p ${dockerpwd}"
+            }
         }
-
-    }
+            
+        stage('Pushing Image to Docker public hub'){
+             steps{
+                 sh 'docker image push pipeline:1.0'
+             }
+        }
+    } 
 }
    // }
 // }
